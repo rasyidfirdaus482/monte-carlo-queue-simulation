@@ -1,6 +1,6 @@
 # Monte Carlo Queue Simulation
 
-![Project Banner](./assets/image/banner.png) 
+![Project Banner](./assets/image/monte carlo.png) 
 *A modern queue simulation system leveraging Monte Carlo methods.*
 
 ---
