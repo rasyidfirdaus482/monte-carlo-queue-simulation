@@ -139,6 +139,7 @@ If you have any feedback, please reach out to us at rasyidfirdaus53@gmail.com
 
 <br clear="both">
 
-<img src="https://raw.githubusercontent.com/maurodesouza/maurodesouza/output/snake.svg" alt="Snake animation" />
+<img src="https://raw.githubusercontent.com/rasyidfirdaus482/monte-carlo-queue-simulation/refs/heads/output/snake.svg" alt="Snake animation" />
+
 
 ###
