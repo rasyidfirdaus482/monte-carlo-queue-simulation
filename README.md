@@ -1,4 +1,3 @@
-# Monte Carlo Queue Simulation
 ![Project Banner](https://github.com/rasyidfirdaus482/monte-carlo-queue-simulation/blob/main/assets/image/Monte%20carlo.png?raw=true)
 <div align="center">
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python logo" />
@@ -109,10 +108,11 @@ monte-carlo-queue-simulation/
 </div>
 
 ## 📊 GitHub Stats
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=maurodesouza&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=dracula&locale=en&hide_border=false" height="150" alt="stats graph" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=maurodesouza&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dracula&hide_border=false" height="150" alt="languages graph" />
+<div align="left">
+  <img src="https://github-readme-stats.vercel.app/api?username=rasyidfirdaus482&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=dracula&locale=en&hide_border=false" height="150" alt="stats graph" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=rasyidfirdaus482&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dracula&hide_border=false" height="150" alt="languages graph" />
 </div>
+
 
 ## 🐍 Contribution Graph
 
