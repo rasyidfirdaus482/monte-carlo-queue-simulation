@@ -1,14 +1,43 @@
 # Monte Carlo Queue Simulation
 
-This project simulates a queueing system using the Monte Carlo method. It provides insights into system performance, including average waiting time, server utilization, and more.
+![Project Banner](https://via.placeholder.com/1200x300.png?text=Monte+Carlo+Queue+Simulation)  
+*A modern queue simulation system leveraging Monte Carlo methods.*
 
-## Features
-- Simulate queueing systems with random arrival and service times.
-- Customizable parameters for queue size, number of servers, etc.
-- Visualize results with graphs.
+---
 
-## Installation
-```bash
-git clone https://github.com/username/monte-carlo-queue-simulation.git
-cd monte-carlo-queue-simulation
-pip install -r requirements.txt
+## 📚 Overview
+
+This project is a Python-based simulation of queueing systems using the Monte Carlo method. It enables users to model, analyze, and visualize complex queue dynamics. Ideal for understanding waiting times, server utilization, and system behavior under varying scenarios.
+
+---
+
+## 🚀 Features
+
+- Simulate queue systems with random arrival and service times.
+- Analyze performance metrics such as:
+  - Average waiting time
+  - Server utilization
+  - Queue length distributions
+- Interactive visualization using Plotly and Streamlit.
+- Customizable parameters for queue configurations.
+
+---
+
+## 🛠️ Technology Stack
+
+- **Python**: Core programming language.
+- **Pandas & NumPy**: Data manipulation and mathematical operations.
+- **Plotly**: Interactive visualizations.
+- **Streamlit**: Web-based interface for running simulations.
+
+---
+
+## 📂 Project Structure
+
+```plaintext
+monte-carlo-queue-simulation/         
+├── src/                 # Source code
+│   ├── main.py          # Entry point of the application
+├── venv/                # Virtual environment (not included in Git)
+├── requirements.txt     # Python dependencies
+└── README.md            # Project documentation
