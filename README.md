@@ -1,5 +1,5 @@
 # Monte Carlo Queue Simulation
-
+![Project Banner](https://github.com/rasyidfirdaus482/monte-carlo-queue-simulation/blob/main/assets/image/Monte%20carlo.png?raw=true)
 <div align="center">
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python logo" />
   <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas logo" />
