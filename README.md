@@ -11,7 +11,7 @@
 
 ## Authors
 
-- [@octokatherine](https://github.com/rasyidfirdaus482)
+- [@Rasyidfirdaus482](https://github.com/rasyidfirdaus482)
 
 <div align="center">
   <img src="https://img.shields.io/static/v1?message=Youtube&logo=youtube&label=&color=FF0000&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="youtube logo" />
