@@ -23,7 +23,9 @@
 </div>
 
 ## 🔛 Demo
-![@DEMO](https://monte-carlo-queue-simulation.streamlit.app/)
+## Demo
+https://monte-carlo-queue-simulation.streamlit.app/
+
 ## 📚 Overview
 
 This project is a Python-based simulation of queueing systems using the Monte Carlo method. It enables users to model, analyze, and visualize complex queue dynamics. Ideal for understanding waiting times, server utilization, and system behavior under varying scenarios.
