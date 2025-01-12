@@ -4,7 +4,7 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
-
+import tes
 # Set page config
 st.set_page_config(
     page_title="Simulasi Antrian Interaktif",
@@ -154,6 +154,7 @@ def simulate_queue(
         "Frekuensi": raw_data["Frekuensi Pelayanan Konsumen"]
     })
 
+   
     # Calculate intervals
     arrival_df = calculate_intervals(arrival_df, "Jarak Kedatangan")
     service_df = calculate_intervals(service_df, "Lama Pelayanan")
@@ -242,9 +243,9 @@ st.sidebar.image("https://docs.streamlit.io/logo.svg", width=100)
 
 st.sidebar.title("🎯 Kontrol Simulasi")
 
-st.sidebar.button("Edit Data", key="edit_data")
+# st.sidebar.button("Edit Data", key="edit_data")
 # Tab untuk pengaturan berbeda
-tabs = st.sidebar.tabs(["⚙️ Parameter", "📊 Visual", "💡 Tips", "🙎‍♂️ Profile", "📝 Edit Data"])
+tabs = st.sidebar.tabs(["⚙️ Parameter", "📊 Visual", "💡 Tips", "🙎‍♂️ Profile"])
 
 with tabs[0]:
     # Parameter Simulasi
@@ -334,47 +335,47 @@ with tabs[3]:
         st.subheader("📸 Foto Profil")  
         st.image("https://media.licdn.com/dms/image/v2/D5603AQEGRZfHEzlcsQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1709377374178?e=1741824000&v=beta&t=8Oy6AjFF-V5BlbymvbXVwDdgtQRY3bBaZxSkRbdBASE", caption="Rasyid Firdaus", width=150,)
 
-# Edit Data Main Tab
-with tabs[4]:
-    st.header("Edit Data")
+# # Edit Data Main Tab
+# with tabs[4]:
+#     st.header("Edit Data")
     
-    # Excel File Upload Section
-    uploaded_file = st.file_uploader("Pilih file Excel", type=["xlsx", "xls"])
+#     # Excel File Upload Section
+#     # uploaded_file = st.file_uploader("Pilih file Excel", type=["xlsx", "xls"])
     
-    if uploaded_file is not None:
-        # Read the Excel file into a DataFrame
-        df = pd.read_excel(uploaded_file)
-        st.write("Data yang di-upload:")
-        st.dataframe(df)
+#     if uploaded_file is not None:
+#         # Read the Excel file into a DataFrame
+#         df = pd.read_excel(uploaded_file)
+#         st.write("Data yang di-upload:")
+#         st.dataframe(df)
         
-        # Add functionality to edit data - example: edit row values
-        st.subheader("Edit Data")
-        index_to_edit = st.number_input("Pilih index yang ingin diedit", min_value=0, max_value=len(df)-1)
+#         # Add functionality to edit data - example: edit row values
+#         st.subheader("Edit Data")
+#         index_to_edit = st.number_input("Pilih index yang ingin diedit", min_value=0, max_value=len(df)-1)
         
-        st.write("Kolom Data:")
-        columns = df.columns.tolist()
-        col_to_edit = st.selectbox("Pilih kolom yang ingin diedit", columns)
-        new_value = st.text_input(f"Nilai baru untuk {col_to_edit}")
+#         st.write("Kolom Data:")
+#         columns = df.columns.tolist()
+#         col_to_edit = st.selectbox("Pilih kolom yang ingin diedit", columns)
+#         new_value = st.text_input(f"Nilai baru untuk {col_to_edit}")
         
-        if st.button("Update Data"):
-            if new_value:
-                df.at[index_to_edit, col_to_edit] = new_value
-                st.write("Data telah diperbarui:")
-                st.dataframe(df)
-            else:
-                st.warning("Harap masukkan nilai baru.")
+#         if st.button("Update Data"):
+#             if new_value:
+#                 df.at[index_to_edit, col_to_edit] = new_value
+#                 st.write("Data telah diperbarui:")
+#                 st.dataframe(df)
+#             else:
+#                 st.warning("Harap masukkan nilai baru.")
 
-    else:
-        st.write("Tidak ada file yang di-upload. Harap upload file Excel.")
+#     else:
+#         st.write("Tidak ada file yang di-upload. Harap upload file Excel.")
 
-# Add Data Export Option to Excel after editing
-if uploaded_file is not None:
-    st.download_button(
-        label="Unduh Data sebagai Excel",
-        data=df.to_excel(index=False),
-        file_name="updated_data.xlsx",
-        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    )
+# # Add Data Export Option to Excel after editing
+# if uploaded_file is not None:
+#     st.download_button(
+#         label="Unduh Data sebagai Excel",
+#         data=df.to_excel(index=False),
+#         file_name="updated_data.xlsx",
+#         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+#     )
 
 # Main content
 st.title("📊 Simulasi Antrian Interaktif")
@@ -398,7 +399,7 @@ if st.sidebar.button("Jalankan Simulasi"):
     st.session_state.simulation_results = simulation_results
 
 # Create tabs for different views
-main_tabs = st.tabs(["📈 Dashboard", "📋 Data Detail", "📊 Analisis Lanjutan",])
+main_tabs = st.tabs(["📈 Dashboard", "📋 Data Detail", "📊 Analisis Lanjutan","Analisis data real"])
 
 if st.session_state.simulation_df is not None:
     simulation_df = st.session_state.simulation_df
@@ -510,7 +511,10 @@ if st.session_state.simulation_df is not None:
         with col3:
             efficiency = (simulation_df["Lama Pelayanan (menit)"].sum() / total_time) * 100
             st.metric("Efisiensi Sistem", f"{efficiency:.1f}%")
-
+    with main_tabs[3]:
+        st.header("📊 Analisis Data Real")
+        st.write("Mengintegrasikan analisis data real-time.")
+        tes.app()
 # Download Section
 st.sidebar.header("💾 Ekspor Data")
 if st.session_state.simulation_df is not None:
