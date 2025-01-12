@@ -67,19 +67,34 @@ def app():
             # Menampilkan hasil analisis
             st.subheader("Hasil Analisis")
             st.write(df)
-
+            col1, col2 = st.columns(2)
+            with col1:
             # Menghitung rata-rata TIQ, ST, TIS, dan Idle Time
-            avg_tiq = df['TIQ'].mean()
-            avg_st = df['ST'].mean()
-            avg_tis = df['TIS'].mean()
-            avg_idle_time = df['Idle Time'].mean()
+                avg_tiq = df['TIQ'].mean()
+                avg_st = df['ST'].mean()
+                avg_tis = df['TIS'].mean()
+                avg_idle_time = df['Idle Time'].mean()
 
             # Menampilkan metrik rata-rata
-            st.subheader("Rata-Rata Waktu")
-            st.metric("Rata-rata TIQ (Time in Queue)", f"{avg_tiq:.2f} menit")
-            st.metric("Rata-rata ST (Service Time)", f"{avg_st:.2f} menit")
-            st.metric("Rata-rata TIS (Time in System)", f"{avg_tis:.2f} menit")
-            st.metric("Rata-rata Idle Time", f"{avg_idle_time:.2f} menit")
+                st.subheader("Hasil Perhitungan Data Real")
+                st.metric("Rata-rata TIQ (Time in Queue)", f"{avg_tiq:.2f} menit")
+                st.metric("Rata-rata ST (Service Time)", f"{avg_st:.2f} menit")
+                st.metric("Rata-rata TIS (Time in System)", f"{avg_tis:.2f} menit")
+                st.metric("Rata-rata Idle Time", f"{avg_idle_time:.2f} menit")
+            with col2:
+                if 'total_idle_time' in st.session_state:
+                    st.subheader("Hasil Perhitungan Data Simulasi")
+                    total_idle_time = st.session_state.total_idle_time
+                    st.metric("Total Idle Time", f"{total_idle_time:.1f} min")
+                    
+                    server_utilization = st.session_state.server_utilization
+                    st.metric("server_utilization", f"{server_utilization:.1f} %")
+
+                    avg_wait_time = st.session_state.avg_wait_time
+                    st.metric("avg_wait_time", f"{avg_wait_time:.1f} Menit")
+
+                else:
+                    st.write("Data tidak ditemukan!")
         
         except Exception as e:
             st.error(f"Terjadi kesalahan: {e}")

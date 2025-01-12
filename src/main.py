@@ -399,54 +399,62 @@ if st.sidebar.button("Jalankan Simulasi"):
     st.session_state.simulation_results = simulation_results
 
 # Create tabs for different views
-main_tabs = st.tabs(["📈 Dashboard", "📋 Data Detail", "📊 Analisis Lanjutan","Analisis data real"])
+main_tabs = st.tabs(["📈 Dashboard", "📋 Data Detail", "📊 Analisis Lanjutan", "Analisis data real"])
 
 if st.session_state.simulation_df is not None:
     simulation_df = st.session_state.simulation_df
     
-    
-    with main_tabs[0]:
+    with main_tabs[0]:  # "📈 Dashboard" tab
         # Dashboard layout
         col1, col2 = st.columns(2)
-        
+
         with col1:
             st.subheader("Statistik Real-time")
-            
+
             # Metrics in cards
-            m1, m2, m3 = st.columns(3)
-            with m1:
+            col1_1, col2_1, col3_1 = st.columns(3)
+            with col1_1:
                 avg_wait_time = simulation_df["Waktu Tunggu (menit)"].mean()
                 st.metric("Rata-rata Waktu Tunggu", f"{avg_wait_time:.1f} min")
-            with m2:
+                st.session_state.avg_wait_time = avg_wait_time
+            with col2_1:
                 total_time = (
-                    time_to_minutes(simulation_df["Selesai Pelayanan"].iloc[-1]) -
+                    time_to_minutes(simulation_df["Selesai Pelayanan"].iloc[-1]) - 
                     time_to_minutes("08:00")
                 )
                 server_utilization = (
                     simulation_df["Lama Pelayanan (menit)"].sum() / total_time
                 ) * 100
                 st.metric("Utilisasi Server", f"{server_utilization:.1f}%")
-            with m3:
+                st.session_state.server_utilization = server_utilization
+            with col3_1:
                 total_idle_time = simulation_df["Idle Time Kasir (menit)"].sum()
                 st.metric("Total Idle Time", f"{total_idle_time:.1f} min")
+                st.session_state.total_idle_time = total_idle_time
+
+            # Second row for m4
+            col4 = st.columns(1)
+            with col4[0]:
+                rata_rata_tis = simulation_df["Waktu dalam Sistem (menit)"].mean()
+                st.metric("Rata-rata TIS", f"{rata_rata_tis:.1f} menit")
 
         with col2:
             st.subheader("Grafik Waktu Tunggu")
             fig = px.line(simulation_df, 
-                         x="Konsumen", 
-                         y="Waktu Tunggu (menit)",
-                         template=chart_theme)
+                          x="Konsumen", 
+                          y="Waktu Tunggu (menit)",
+                          template="plotly_dark")  # Ensure chart_theme variable is defined if needed
             st.plotly_chart(fig, use_container_width=True)
 
-        # Additional visualizations
-        if "Gantt Chart" in show_charts:
-            st.subheader("Gantt Chart Pelayanan")
-            fig = px.timeline(simulation_df,
-                            x_start="Mulai Pelayanan",
-                            x_end="Selesai Pelayanan",
-                            y="Konsumen",
-                            template=chart_theme)
-            st.plotly_chart(fig, use_container_width=True)
+            # Additional visualizations (Gantt Chart)
+            if "Gantt Chart" in show_charts:  # Ensure 'show_charts' is properly defined
+                st.subheader("Gantt Chart Pelayanan")
+                fig = px.timeline(simulation_df,
+                                   x_start="Mulai Pelayanan",
+                                   x_end="Selesai Pelayanan",
+                                   y="Konsumen",
+                                   template="plotly_dark")  # Use template if needed
+                st.plotly_chart(fig, use_container_width=True)
 
     with main_tabs[1]:
         st.header("Data Detail")
