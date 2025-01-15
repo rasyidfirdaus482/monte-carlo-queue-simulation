@@ -84,14 +84,21 @@ def app():
             with col2:
                 if 'total_idle_time' in st.session_state:
                     st.subheader("Hasil Perhitungan Data Simulasi")
-                    total_idle_time = st.session_state.total_idle_time
-                    st.metric("Total Idle Time", f"{total_idle_time:.1f} min")
                     
                     server_utilization = st.session_state.server_utilization
                     st.metric("server_utilization", f"{server_utilization:.1f} %")
 
+                    rata_rata_pelayanan = st.session_state.rata_rata_pelayanan
+                    st.metric("Rata-rata pelayanan", f"{rata_rata_pelayanan:.1f} menit")
+
+                    rata_rata_tis = st.session_state.rata_rata_tis
+                    st.metric("Rata-rata TIS", f"{rata_rata_tis:.1f} menit")
+
                     avg_wait_time = st.session_state.avg_wait_time
-                    st.metric("avg_wait_time", f"{avg_wait_time:.1f} Menit")
+                    st.metric("TIQ (Waktu Tunggu)", f"{avg_wait_time:.1f} Menit")
+
+                    total_idle_time = st.session_state.total_idle_time
+                    st.metric("Total Idle Time", f"{total_idle_time:.1f} min")
 
                 else:
                     st.write("Data tidak ditemukan!")
