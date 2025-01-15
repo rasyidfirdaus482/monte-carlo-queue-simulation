@@ -9,7 +9,7 @@ import tes
 
 # Set page config
 st.set_page_config(
-    page_title="Simulasi Antrian Interaktif",
+    page_title="Simulasi Antrian Metode Monte Carlo",
     page_icon="🏥",
     layout="wide"
 )
@@ -425,8 +425,7 @@ if st.session_state.simulation_df is not None:
                 st.plotly_chart(fig, use_container_width=True)
 
     with main_tabs[1]:
-        st.header("Data Detail")
-        st.header("📋 Semua Data Interaktif")
+        st.header("📋 Data Detail")
         st.subheader("Simulasi Antrian")
         selected_columns = st.multiselect(
             "Pilih Kolom yang Ditampilkan",
