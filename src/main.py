@@ -341,7 +341,7 @@ with tabs[3]:
 #     )
 
 # Main content
-st.title("📊 Simulasi Antrian Interaktif")
+st.title("📊 Simulasi Antrian Monte Carlo")
 
 # Simulasi antrian ketika tombol ditekan
 if 'simulation_df' not in st.session_state:
