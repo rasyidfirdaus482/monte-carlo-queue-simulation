@@ -1,31 +1,29 @@
-name: Generate snake animation
-
 on:
-  schedule: # execute every 12 hours
-    - cron: "* */12 * * *"
-
-  workflow_dispatch:
-
-  push:
-    branches:
-    - main
+  workflow_dispatch: # bisa dijalankan manual
+  schedule:
+    - cron: "0 0 * * 0" # setiap minggu
 
 jobs:
   generate:
-    permissions:
-      contents: write
     runs-on: ubuntu-22.04
-    timeout-minutes: 5
-
     steps:
-      - name: generate snake.svg
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Generate snake.svg
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: rasyidfirdaus482
           outputs: dist/snake.svg?palette=github-dark
 
+      - name: Decide randomly to commit
+        run: |
+          if [ $((RANDOM % 2)) -eq 0 ]; then
+            echo "Skipping commit this time."
+            exit 0
+          fi
 
-      - name: push snake.svg to the output branch
+      - name: Push to output
         uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
           target_branch: output
